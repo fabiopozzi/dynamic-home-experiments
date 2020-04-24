@@ -1,7 +1,9 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const forecast = require('./forecast')
 require('dotenv').config()
+
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -23,6 +25,17 @@ app.use(express.static(publicDirPath))
 // home page
 app.get('/', (req, res) => {
     // geolocalizzati, se fallisce usa impostazioni predefinite
+    const latitude = 45.45
+    const longitude = 8.61
+
+    forecast(latitude, longitude, (error, forecastData) => {
+      if (error) {
+        return console.log(error);
+      }
+
+      console.log(forecastData);
+    });
+
 
     // ottieni meteo
 
