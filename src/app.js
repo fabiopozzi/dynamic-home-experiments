@@ -29,11 +29,16 @@ app.get('/', (req, res) => {
     const longitude = 8.61
 
     forecast(latitude, longitude, (error, forecastData) => {
-      if (error) {
-        return console.log(error);
-      }
+        if (error) {
+            return console.log(error);
+        }
 
-      console.log(forecastData);
+        console.log(forecastData);
+        switch (forecastData.icon) {
+            case 'cloudy':
+                forecastData.icon = 'wi-cloudy'
+        }
+        res.render("index", forecastData);
     });
 
 
@@ -41,8 +46,6 @@ app.get('/', (req, res) => {
 
     // ottieni calendario
 
-    // render homepage
-    res.render('index')
 })
 
 app.listen(port, () => {

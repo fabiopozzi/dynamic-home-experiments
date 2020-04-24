@@ -8,9 +8,11 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('unable to find location.', undefined)
         } else {
-            const temp = body.currently.temperature
-            const rain_chance = body.currently.precipProbability
-            callback(undefined, `Al momento ci sono ${temp}°C fuori. Le probabilità di pioggia sono ${rain_chance}%.`)
+            callback(undefined, {
+                temperature: body.currently.temperature,
+                rain_chance: body.currently.precipProbability,
+                icon: body.currently.icon
+            })
         }
     })
 }

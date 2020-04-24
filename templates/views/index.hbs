@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="/css/bulma.min.css">
-    <script defer src="/css/all.min.js"></script>
+    <link rel="stylesheet" href="/css/weather-icons.min.css">
+    <script defer src="/js/all.min.js"></script>
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -29,7 +30,13 @@
             </div>
             <div class="tile is-parent">
                 <div class="tile is-child box">
-                    <p class="title">Meteo</p>
+                    <div class="intro-icons">
+                        <p class="title">Meteo</p>
+                        <p>Temperatura {{temperature}}</p>
+                        <div class="intro-icons">
+                            <i class="wi {{icon}}"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
