@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/bulma.min.css">
     <link rel="stylesheet" href="/css/weather-icons.min.css">
     <script defer src="/js/all.min.js"></script>
@@ -29,13 +30,15 @@
                 </div>
             </div>
             <div class="tile is-parent">
+                <div class="tile is-child box is-2">
+                    <div class="meteo-icons">
+                        <i class="wi {{icon}}"></i>
+                    </div>
+                </div>
                 <div class="tile is-child box">
-                    <div class="intro-icons">
-                        <p class="title">Meteo</p>
+                    <div>
                         <p>Temperatura {{temperature}}</p>
-                        <div class="intro-icons">
-                            <i class="wi {{icon}}"></i>
-                        </div>
+                        <p>Possibilità di pioggia {{rain_chance}}%</p>
                     </div>
                 </div>
             </div>

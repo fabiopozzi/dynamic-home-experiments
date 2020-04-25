@@ -37,6 +37,9 @@ app.get('/', (req, res) => {
         switch (forecastData.icon) {
             case 'cloudy':
                 forecastData.icon = 'wi-cloudy'
+                break
+            case 'clear-day':
+                forecastData.icon = 'wi-day-sunny'
         }
         res.render("index", forecastData);
     });
