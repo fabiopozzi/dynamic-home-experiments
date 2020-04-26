@@ -1,20 +1,14 @@
-const request = require('request')
+const needle = require('needle')
 
-const forecast = (latitude, longitude, callback) => {
+const forecast = async (latitude, longitude) => {
     const url = 'https://api.darksky.net/forecast/'+ process.env.WEATHER_API_KEY + '/' + latitude + ',' + longitude + '?units=si&lang=it'
-    request({ url, json: true }, (error, { body }) => {
-        if (error) {
-            callback('unable to connect to weather service!', undefined)
-        } else if (body.error) {
-            callback('unable to find location.', undefined)
-        } else {
-            callback(undefined, {
-                temperature: body.currently.temperature,
-                rain_chance: body.currently.precipProbability,
-                icon: body.currently.icon
-            })
-        }
-    })
+
+    const data = await needle('get', url, { json: true })
+    return {
+      temperature: data.body.currently.temperature,
+      rain_chance: data.body.currently.precipProbability,
+      icon: data.body.currently.icon,
+    }
 }
 
 module.exports = forecast

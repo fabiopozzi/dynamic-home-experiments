@@ -23,33 +23,25 @@ app.use(express.static(publicDirPath))
 
 
 // home page
-app.get('/', (req, res) => {
-    // geolocalizzati, se fallisce usa impostazioni predefinite
+app.get('/', async (req, res) => {
+    // TODO: geolocalizzati, se fallisce usa impostazioni predefinite
     const latitude = 45.45
     const longitude = 8.61
 
-    forecast(latitude, longitude, (error, forecastData) => {
-        if (error) {
-            return console.log(error);
-        }
+    // Meteo
+    const forecastData = await forecast(latitude, longitude)
+    // TODO: manipolazione icon usando then ed un'altra funzione?
+    switch (forecastData.icon) {
+        case 'cloudy':
+            forecastData.icon = 'wi-cloudy'
+            break
+        case 'clear-day':
+            forecastData.icon = 'wi-day-sunny'
+    }
+    // HN top 10 usando firebase.
 
-        console.log(forecastData);
-        switch (forecastData.icon) {
-            case 'cloudy':
-                forecastData.icon = 'wi-cloudy'
-                break
-            case 'clear-day':
-                forecastData.icon = 'wi-day-sunny'
-        }
-        res.render("index", forecastData);
-    });
-
-
-    // ottieni meteo
-
-    // ottieni calendario
-
-})
+    res.render("index", forecastData);
+});
 
 app.listen(port, () => {
     console.log('Server is listening on port ', port)
