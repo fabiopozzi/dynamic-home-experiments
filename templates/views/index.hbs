@@ -23,22 +23,23 @@
         </div>
     </nav>
     <div class="container">
-        <div class="tile is-ancestor">
-            <div class="tile is-4 is-vertical is-parent">
-                <div class="tile is-child box">
-                    <p class="title">Calendar</p>
-                </div>
+        <div class="columns">
+            <div class="column is-three-fifths">
+                <p class="title">Hacker News</p>
+                {{#each stories}}
+                    <p><a href="{{url}}">{{title}}</a></p>
+                {{/each}}
             </div>
-            <div class="tile is-parent">
-                <div class="tile is-child box is-2">
-                    <div class="meteo-icons">
-                        <i class="wi {{icon}}"></i>
+            <div class="column">
+                <div class="columns">
+                    <div class="column is-one-fifth">
+                        <div class="meteo-icons">
+                            <i class="wi {{forecastData.icon}}"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="tile is-child box">
-                    <div>
-                        <p>Temperatura {{temperature}}</p>
-                        <p>Possibilità di pioggia {{rain_chance}}%</p>
+                    <div class="column">
+                        <p>Temperatura {{forecastData.temperature}}</p>
+                        <p>Possibilità di pioggia {{forecastData.rain_chance}}%</p>
                     </div>
                 </div>
             </div>
