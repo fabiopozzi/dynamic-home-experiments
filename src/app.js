@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const forecast = require('./forecast')
+const hn = require('./hn')
 require('dotenv').config()
 
 
@@ -30,7 +31,7 @@ app.get('/', async (req, res) => {
 
     // Meteo
     const forecastData = await forecast(latitude, longitude)
-    // TODO: manipolazione icon usando then ed un'altra funzione?
+    // manipolazione usando altra funzione
     switch (forecastData.icon) {
         case 'cloudy':
             forecastData.icon = 'wi-cloudy'
@@ -39,8 +40,9 @@ app.get('/', async (req, res) => {
             forecastData.icon = 'wi-day-sunny'
     }
     // HN top 10 usando firebase.
-
-    res.render("index", forecastData);
+    const stories = await hn.top_stories()
+    //console.log( { forecastData, stories })
+    res.render("index", { forecastData, stories });
 });
 
 app.listen(port, () => {
