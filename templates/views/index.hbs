@@ -9,43 +9,42 @@
     <link rel="stylesheet" href="/css/weather-icons.min.css">
     <script defer src="/js/all.min.js"></script>
   </head>
-  <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">Home</a>
-
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+  <body class="has-background-white-ter">
+    <section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                La mia homepage
+            </h1>
         </div>
-    </nav>
-    <div class="container">
-        <div class="columns">
-            <div class="column is-three-fifths">
-                <p class="title">Hacker News</p>
-                {{#each stories}}
-                    <p><a href="{{url}}">{{title}}</a>
-                    <a href="/comments/{{storyId}}"><span class="is-size-7">{{num_comments}} comments</span></a>
-                    </p>
-                {{/each}}
-            </div>
-            <div class="column">
-                <div class="columns">
-                    <div class="column is-one-fifth">
-                        <div class="meteo-icons">
-                            <i class="wi {{forecastData.icon}}"></i>
+    </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-three-fifths spazi">
+                    <p class="title">Hacker News</p>
+                    {{#each stories}}
+                        <p><a href="{{url}}">{{title}}</a>
+                        <a href="/comments/{{storyId}}"><span class="is-size-7 has-text-grey-light">{{num_comments}} comments</span></a>
+                        </p>
+                    {{/each}}
+                </div>
+                <div class="column spazi">
+                    <div class="columns">
+                        <div class="column is-one-fifth">
+                            <div class="meteo-icons">
+                                <i class="wi {{forecastData.icon}}"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <p>Temperatura {{forecastData.temperature}}</p>
-                        <p>Possibilità di pioggia {{forecastData.rain_chance}}%</p>
+                        <div class="column">
+                            <p>Temperatura {{forecastData.temperature}}</p>
+                            <p>Possibilità di pioggia {{forecastData.rain_chance}}%</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
   </body>
 </html>
