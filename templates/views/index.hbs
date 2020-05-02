@@ -27,7 +27,9 @@
             <div class="column is-three-fifths">
                 <p class="title">Hacker News</p>
                 {{#each stories}}
-                    <p><a href="{{url}}">{{title}}</a></p>
+                    <p><a href="{{url}}">{{title}}</a>
+                    <a href="/comments/{{storyId}}"><span class="is-size-7">{{num_comments}} comments</span></a>
+                    </p>
                 {{/each}}
             </div>
             <div class="column">

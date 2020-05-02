@@ -45,6 +45,13 @@ app.get('/', async (req, res) => {
     res.render("index", { forecastData, stories });
 });
 
+// comments
+app.get('/comments/:id', async (req, res) => {
+    const comments = await hn.story_comments(req.params.id)
+
+    console.log(comments)
+})
+
 app.listen(port, () => {
     console.log('Server is listening on port ', port)
 })
