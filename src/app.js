@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const forecast = require('./forecast')
 const hn = require('./hn')
+const news = require('./news')
 require('dotenv').config()
 
 
@@ -40,9 +41,17 @@ app.get('/', async (req, res) => {
             forecastData.icon = 'wi-day-sunny'
     }
     // HN top 10 usando firebase.
-    const stories = await hn.top_stories()
+    const HNstories = await hn.top_stories()
+
+    // Top new ANSA
+    const ANSAnews = await news.ansa()
+
     //console.log( { forecastData, stories })
-    res.render("index", { forecastData, stories });
+    res.render("index", {
+        forecastData,
+        HNstories,
+        ANSAnews 
+    });
 });
 
 // comments

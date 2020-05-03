@@ -10,21 +10,12 @@
     <script defer src="/js/all.min.js"></script>
   </head>
   <body class="has-background-white-ter">
-    <section class="hero is-primary">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                La mia homepage
-            </h1>
-        </div>
-    </div>
-    </section>
     <section>
         <div class="container">
             <div class="columns">
                 <div class="column is-three-fifths spazi">
                     <p class="title">Hacker News</p>
-                    {{#each stories}}
+                    {{#each HNstories}}
                         <p><a href="{{url}}">{{title}}</a>
                         <a href="/comments/{{storyId}}"><span class="is-size-7 has-text-grey-light">{{num_comments}} comments</span></a>
                         </p>
@@ -42,6 +33,14 @@
                             <p>Possibilità di pioggia {{forecastData.rain_chance}}%</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-three-fifths spazi">
+                    <p class="title">ANSA</p>
+                    {{#each ANSAnews}}
+                        <p><a href="{{url}}">{{title}}</a> </p>
+                    {{/each}}
                 </div>
             </div>
         </div>
