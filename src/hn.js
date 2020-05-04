@@ -8,11 +8,16 @@ const top_stories = async () => {
     // console.log(data.body.hits)
     for (const key in data.body.hits) {
         const el = data.body.hits[key]
+        let website = ''
+        if (el.url) {
+            website = el.url.split("/")[2]
+        }
         stories.push({
             title: el.title,
             url: el.url,
             num_comments: el.num_comments,
-            storyId: el.objectID
+            storyId: el.objectID,
+            website
         })
     }
 
