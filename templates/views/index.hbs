@@ -15,11 +15,16 @@
             <div class="columns">
                 <div class="column is-three-fifths spazi">
                     <p class="title">Hacker News</p>
+                    <table class="table is-striped">
                     {{#each HNstories}}
-                        <p><a href="{{url}}">{{title}}</a>
-                        <a href="/comments/{{storyId}}"><span class="is-size-7 has-text-grey-light">{{num_comments}} comments</span></a>
-                        </p>
+                        <tr>
+                            <td>
+                                <a href="{{url}}" class="has-text-black-bis is-block linea">{{title}}</a>
+                                <a href="/comments/{{storyId}}"><span class="is-size-7 has-text-grey linea">({{website}})</span><span class="is-size-7 has-text-grey-light"> {{num_comments}} comments</span></a>
+                            </td>
+                        </tr>
                     {{/each}}
+                    </table>
                 </div>
                 <div class="column spazi">
                     <div class="columns">
@@ -39,9 +44,15 @@
             <div class="columns">
                 <div class="column is-three-fifths spazi">
                     <p class="title">ANSA</p>
+                    <table class="table is-striped">
                     {{#each ANSAnews}}
-                        <p><a href="{{url}}">{{title}}</a> </p>
+                        <tr>
+                            <td>
+                                <a href="{{url}}">{{title}}</a>
+                            </td>
+                        </tr>
                     {{/each}}
+                    </table>
                 </div>
             </div>
         </div>
