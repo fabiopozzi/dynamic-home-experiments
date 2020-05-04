@@ -37,8 +37,13 @@ app.get('/', async (req, res) => {
         case 'cloudy':
             forecastData.icon = 'wi-cloudy'
             break
+        case 'partly-cloudy-day':
+            forecastData.icon = 'wi-day-sunny-overcast'
         case 'clear-day':
             forecastData.icon = 'wi-day-sunny'
+            break
+        default:
+            console.log(forecastData.icon)
     }
     // HN top 10 usando firebase.
     const HNstories = await hn.top_stories()
